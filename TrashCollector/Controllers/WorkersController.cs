@@ -6,12 +6,14 @@ using System.Web.Mvc;
 
 namespace TrashCollector.Controllers
 {
+    [Authorize]
     public class WorkersController : Controller
     {
         // GET: Workers
+       
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
     }
 }

@@ -281,6 +281,8 @@
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Workers\Index.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Clients\SeePickups.cshtml" />
+    <Content Include="Views\Clients\PickupsForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
