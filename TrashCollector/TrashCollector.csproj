@@ -205,6 +205,10 @@
     <Compile Include="Migrations\201803281454470_InitialModel.Designer.cs">
       <DependentUpon>201803281454470_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803281513067_PopulatePickupDays.cs" />
+    <Compile Include="Migrations\201803281513067_PopulatePickupDays.Designer.cs">
+      <DependentUpon>201803281513067_PopulatePickupDays.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -300,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803281454470_InitialModel.resx">
       <DependentUpon>201803281454470_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803281513067_PopulatePickupDays.resx">
+      <DependentUpon>201803281513067_PopulatePickupDays.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
