@@ -8,9 +8,13 @@ namespace TrashCollector.ViewModels
 {
     public class ClientViewModel
     {
-        public IEnumerable<PickupDay> PickupDays { get; set; }
+        public List<PickupDay> PickupDays { get; set; }
         public Client Client { get; set; }
-       
+    
         public Address Address { get; set; }
+        public int? PickupDayId { get; set; }
+       
+       
+        
     }
 }

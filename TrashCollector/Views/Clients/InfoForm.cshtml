@@ -1,6 +1,51 @@
-﻿@model TrashCollector.Models.Client
+﻿@model TrashCollector.ViewModels.ClientViewModel
 @{
-    ViewBag.Title = "Info Form";
+    /**/
+
+    ViewBag.Title = "InfoForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Update Info</h2>
+
+@using (Html.BeginForm("Save", "Clients"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Client.Name)
+        @Html.TextBoxFor(c => c.Client.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Address.AddressLine1)
+        @Html.TextBoxFor(c => c.Address.AddressLine1, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Address.AddressLine2)
+        @Html.TextBoxFor(m => m.Address.AddressLine2, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Address.City)
+        @Html.TextBoxFor(c => c.Address.City, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Address.State)
+        @Html.TextBoxFor(c => c.Address.State, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Address.ZipCode)
+        @Html.TextBoxFor(c => c.Address.ZipCode, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+            @Html.LabelFor(c => c.PickupDays)
+            @Html.DropDownListFor(c => c.Client.PickUpDayId, new SelectList(Model.PickupDays, "Id", "Name"), "Select Pickup Day", new { @class = "form-control" })
+
+        </div>
+    @Html.HiddenFor(c => c.Client.Id)
+    @Html.HiddenFor(c => c.Address.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}
