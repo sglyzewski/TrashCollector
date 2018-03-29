@@ -1,9 +1,35 @@
-﻿@model TrashCollector.ViewModels.ClientViewModel
-@{
-   
+﻿@model TrashCollector.ViewModels.SeeDatesViewModel
+    @{
 
-    ViewBag.Title = "SeePickups";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<h2>Your Pickups</h2>
 
+        ViewBag.Title = Model.Client.Name;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    <h2>Your Pickups</h2>
+
+    <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Pick Up Day</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var el in Model.dates)
+                {
+                <tr>
+
+
+                    <td>@Model.Client.Name</td>
+                    <td>
+                        @el
+                      
+
+                    @*<td>@Html.ActionLink(el.Name, "Edit", "Movies", new { id = el.Id }, null)</td>*@
+                </tr>
+                }
+            </tbody>
+        </table>
+
+
+    

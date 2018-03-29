@@ -7,6 +7,7 @@ using TrashCollector.Models;
 using TrashCollector.ViewModels;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
+using System.Globalization;
 
 namespace TrashCollector.Controllers
 {
@@ -24,8 +25,8 @@ namespace TrashCollector.Controllers
         
         public ActionResult Index()
         {
-            var movies = _context.Clients.ToList();
-            return View("Index");
+            IEnumerable<Client> clients = _context.Clients.ToList();
+            return View(clients);
         }
 
         public ActionResult ChangeInfo()
@@ -64,6 +65,7 @@ namespace TrashCollector.Controllers
                     Client = client,
                     PickupDays = _context.PickupDays.ToList(),
                     Address = _context.Addresses.SingleOrDefault(a => a.Id == (Convert.ToInt32(client.AddressId)))
+                    
 
             };
 
@@ -82,22 +84,65 @@ namespace TrashCollector.Controllers
             return View();
         }
 
+        public ActionResult SeePickups(int id)
+        {
+            var client = _context.Clients.SingleOrDefault(c => c.Id == id);
+            var address = _context.Addresses.SingleOrDefault(a => a.Id == client.AddressId);
+
+            var results = GetDaysForYearFromStartDate(client);
+            var datelist = GetStringDates(results);
+
+
+
+            var viewModel = new SeeDatesViewModel()
+            {
+                Client = client,
+                Address = address,
+                result = results,
+                dates = datelist
+            };
+             if (client == null)
+                return HttpNotFound();
+            return View(viewModel);
+        }
+
+
+        public IList<DateTime> GetDaysForYearFromStartDate(Client client)
+        {
+              var startdate = _context.PickupDays.SingleOrDefault(c => c.Id == client.PickUpDayId);
+
+
+        DateTime currentDay = startdate.FirstPickup;
+        List<DateTime> results = new List<DateTime>();
+
+
+        int currentYear = (startdate.FirstPickup).Year;
+                while (currentDay.Year == currentYear)
+                {
+                    currentDay = currentDay.AddDays(7);
+                    results.Add(currentDay);
+
+                }
+
+                return results;
+            }
+
+
+    public IList<string> GetStringDates(IList<DateTime> dates)
+        {
+            IList<string> result = new List<string>();
+            foreach (var el in dates)
+            {
+                result.Add(el.ToString("dddd dd MMMM", CultureInfo.CreateSpecificCulture("en-US")));
+            }
+            return result;
+        }
+
         [HttpPost]
         public ActionResult Save(Client client, Address address)
         {
 
 
-            if (!ModelState.IsValid)
-            {
-                var viewModel = new ClientViewModel
-                {
-                    Client = client,
-                    PickupDays = _context.PickupDays.ToList(),
-                    Address = address
-                };
-            return View("InfoForm", viewModel);
-
-        }
 
             if (address.Id < 1)
             {

@@ -4,36 +4,36 @@ using System.Linq;
 using System.Web;
 using TrashCollector.Models;
 using TrashCollector.Controllers;
+using System.Globalization;
 
 namespace TrashCollector.ViewModels
 {
     public class SeeDatesViewModel
     {
+        public Client Client { get; set; }
+        private ApplicationDbContext _context = new ApplicationDbContext();
 
-        
-     
-        DateTime startdate = new DateTime(2018, 1, 5);
-        IList<DateTime> GetDaysForYearFromStartDate(DateTime startDate)
+        public Address Address { get; set; }
+        public int? PickupDayId { get; set; }
+
+        public IList<DateTime> result { get; set; }
+
+        public IList<string> dates { get; set; }
+
+      
+
+      
+
+        public IList<string> GetStringDates(IList<DateTime> dates)
         {
-            DateTime currentDay = startDate;
-            List<DateTime> results = new List<DateTime>();
-
-
-            int currentYear = startDate.Year;
-            while (currentDay.Year == currentYear)
+            IList<string> result = new List<string>();
+            foreach (var el in dates)
             {
-                currentDay = currentDay.AddDays(7);
-                results.Add(currentDay);
-
+                result.Add(el.ToString("dddd dd MMMM", CultureInfo.CreateSpecificCulture("en-US")));
             }
-
-            return results;
+            return result;
         }
-
-        public SeeDatesViewModel()
-        {
-            IList<DateTime> result = GetDaysForYearFromStartDate(startdate);
-        }
+       
 
         
     }
