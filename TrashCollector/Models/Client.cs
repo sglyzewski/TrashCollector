@@ -10,10 +10,11 @@ namespace TrashCollector.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public byte AccountId { get; set; }
-        public byte PickUpDayId { get; set; }
-        public byte AddressId { get; set; }
-        public int NumberOfPickUpsYTD { get; set; }
+        public byte? AccountId { get; set; }
+        public byte? PickUpDayId { get; set; }
+        public byte? AddressId { get; set; }
+        
+        public int? NumberOfPickUpsYTD { get; set; }
 
     }
 }

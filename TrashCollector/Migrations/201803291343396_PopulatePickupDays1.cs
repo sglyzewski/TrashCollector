@@ -3,7 +3,7 @@ namespace TrashCollector.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class PopulatePickupDays : DbMigration
+    public partial class PopulatePickupDays1 : DbMigration
     {
         public override void Up()
         {

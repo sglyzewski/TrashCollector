@@ -41,13 +41,13 @@ namespace TrashCollector.Controllers
             return View("InfoForm", viewModel);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            _context.Dispose();
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    _context.Dispose();
+        //}
 
 
-
+        [HttpPost]
         public ActionResult Edit(int id)
         {
             var client = _context.Clients.SingleOrDefault(c => c.Id == id);
@@ -70,25 +70,36 @@ namespace TrashCollector.Controllers
             return View("InfoForm", viewModel);
         
         }
+        public ActionResult InfoForm()
+        {
+            return View();
+        }
+        public ActionResult Create(Client client)
+        {
+            _context.Clients.Add(client);
+
+            
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Save(Client client, Address address)
         {
-            
 
-            //if (!ModelState.IsValid)
-            ////{
-            //    var viewModel = new ClientViewModel
-            //    {
-            //        Client = client,
-            //        PickupDays = _context.PickupDays.ToList(),
-            //        Address = address
-            //    };
-            //    return View("InfoForm", viewModel);
 
-            //}
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ClientViewModel
+                {
+                    Client = client,
+                    PickupDays = _context.PickupDays.ToList(),
+                    Address = address
+                };
+            return View("InfoForm", viewModel);
 
-            if(address.Id == 0)
+        }
+
+            if (address.Id < 1)
             {
                 _context.Addresses.Add(address);
                
@@ -103,6 +114,7 @@ namespace TrashCollector.Controllers
                 addressInDb.ZipCode = address.ZipCode;
                 
             }
+            _context.SaveChanges();
             try
             {
                 _context.SaveChanges();

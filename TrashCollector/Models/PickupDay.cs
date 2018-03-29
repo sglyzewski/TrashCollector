@@ -13,5 +13,6 @@ namespace TrashCollector.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
+        public DateTime FirstPickup { get; set; }
     }
 }

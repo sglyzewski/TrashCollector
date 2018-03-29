@@ -213,6 +213,30 @@
     <Compile Include="Migrations\201803281555421_SeedUsers.Designer.cs">
       <DependentUpon>201803281555421_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803282023042_PopulateClients.cs" />
+    <Compile Include="Migrations\201803282023042_PopulateClients.Designer.cs">
+      <DependentUpon>201803282023042_PopulateClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803282029225_InitialModel1.cs" />
+    <Compile Include="Migrations\201803282029225_InitialModel1.Designer.cs">
+      <DependentUpon>201803282029225_InitialModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803282030569_PopulateClients1.cs" />
+    <Compile Include="Migrations\201803282030569_PopulateClients1.Designer.cs">
+      <DependentUpon>201803282030569_PopulateClients1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803291338145_InitialModel2.cs" />
+    <Compile Include="Migrations\201803291338145_InitialModel2.Designer.cs">
+      <DependentUpon>201803291338145_InitialModel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803291343396_PopulatePickupDays1.cs" />
+    <Compile Include="Migrations\201803291343396_PopulatePickupDays1.Designer.cs">
+      <DependentUpon>201803291343396_PopulatePickupDays1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803291347387_PopulatePickupDays2.cs" />
+    <Compile Include="Migrations\201803291347387_PopulatePickupDays2.Designer.cs">
+      <DependentUpon>201803291347387_PopulatePickupDays2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -226,6 +250,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
+    <Compile Include="ViewModels\SeeDatesViewModel.cs" />
     <Compile Include="ViewModels\WorkerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +345,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803281555421_SeedUsers.resx">
       <DependentUpon>201803281555421_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803282023042_PopulateClients.resx">
+      <DependentUpon>201803282023042_PopulateClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803282029225_InitialModel1.resx">
+      <DependentUpon>201803282029225_InitialModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803282030569_PopulateClients1.resx">
+      <DependentUpon>201803282030569_PopulateClients1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803291338145_InitialModel2.resx">
+      <DependentUpon>201803291338145_InitialModel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803291343396_PopulatePickupDays1.resx">
+      <DependentUpon>201803291343396_PopulatePickupDays1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803291347387_PopulatePickupDays2.resx">
+      <DependentUpon>201803291347387_PopulatePickupDays2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
