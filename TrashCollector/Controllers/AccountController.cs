@@ -157,7 +157,6 @@ namespace TrashCollector.Controllers
                 if (result.Succeeded)
                 {
                     //TempCode
-                 
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     

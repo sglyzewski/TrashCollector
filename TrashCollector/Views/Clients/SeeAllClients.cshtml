@@ -1,0 +1,30 @@
+﻿@model IEnumerable<TrashCollector.Models.Client>
+@{
+    ViewBag.Title = "Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clients</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var el in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(el.Name, "SeePickups", "Clients", new { id = el.Id }, null)</td>
+
+                <td>@el.AddressId</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("AddClient", "ChangeInfo", "Clients", null, new { @class = "btn btn-primary" })
+</p>
+

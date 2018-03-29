@@ -15,17 +15,22 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var el in Model.dates)
+                @foreach (var el in Model.Dates)
                 {
                 <tr>
 
 
                     <td>@Model.Client.Name</td>
-                    <td>
-                        @el
+                    <td>@el</td>
                       
 
-                    @*<td>@Html.ActionLink(el.Name, "Edit", "Movies", new { id = el.Id }, null)</td>*@
+                    <td>
+                    <form action="ClientsController/DeleteDate" method="GET">
+                        <input type="hidden" name= "Property" value="hello, world"/>
+                        <button typeof=" = "submit">Delete</button>
+                    </form>
+                    
+                    @*@Html.ActionLink("Delete", "DeleteDate", "Clients", new { viewModel = this.Model, element = el  })*@</td>
                 </tr>
                 }
             </tbody>

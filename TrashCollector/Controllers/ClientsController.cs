@@ -18,15 +18,29 @@ namespace TrashCollector.Controllers
         
         // GET: Clients
 
+          
         public ClientsController()
         {
             _context = new ApplicationDbContext();
         }
-        
-        public ActionResult Index()
+
+       
+        public ActionResult Index(Client client)
         {
-            IEnumerable<Client> clients = _context.Clients.ToList();
-            return View(clients);
+            return View();
+        }
+        
+        public ActionResult SeeAllClients()
+        {
+            if (User.IsInRole("CanSeeAllPickups"))
+            {
+                IEnumerable<Client> clients = _context.Clients.ToList();
+                return View(clients);
+            }
+            else
+            {
+                return View("Index");
+            }
         }
 
         public ActionResult ChangeInfo()
@@ -98,12 +112,27 @@ namespace TrashCollector.Controllers
             {
                 Client = client,
                 Address = address,
-                result = results,
-                dates = datelist
+                Result = results,
+                Dates = datelist
             };
              if (client == null)
                 return HttpNotFound();
             return View(viewModel);
+        }
+
+        public ActionResult DeleteDate(SeeDatesViewModel viewmodel, string element)
+        {
+            List<string> dates = viewmodel.Dates;
+            dates.Remove(element);
+            SeeDatesViewModel newViewModel = new SeeDatesViewModel()
+            {
+                Client = viewmodel.Client,
+                Address = viewmodel.Address,
+                Dates = dates
+            };
+
+
+            return View("SeePickups", newViewModel);
         }
 
 
@@ -128,12 +157,15 @@ namespace TrashCollector.Controllers
             }
 
 
-    public IList<string> GetStringDates(IList<DateTime> dates)
+    public List< string> GetStringDates(IList<DateTime> dates)
         {
-            IList<string> result = new List<string>();
+            List< string> result = new List< string>();
+       
             foreach (var el in dates)
             {
-                result.Add(el.ToString("dddd dd MMMM", CultureInfo.CreateSpecificCulture("en-US")));
+                
+                result.Add( el.ToString("dddd dd MMMM", CultureInfo.CreateSpecificCulture("en-US")));
+               
             }
             return result;
         }

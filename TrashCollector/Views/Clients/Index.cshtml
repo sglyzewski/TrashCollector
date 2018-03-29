@@ -4,28 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Clients</h2>
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Address</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var el in Model)
-        {
-            <tr>
-                <td>@Html.ActionLink(el.Name, "SeePickups", "Clients", new { id = el.Id }, null)</td>
+<h2>Welcome</h2>
 
-                <td>@el.AddressId</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
+@Html.ActionLink("See All Clients", "SeeAllClients", "Clients", null, new { @class = "btn btn-primary" })
 <p>
-    @Html.ActionLink("AddClient", "ChangeInfo", "Clients", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Add Client", "ChangeInfo", "Clients", null, new { @class = "btn btn-primary" })
 </p>
 
 

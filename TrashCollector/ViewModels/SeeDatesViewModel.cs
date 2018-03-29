@@ -16,25 +16,11 @@ namespace TrashCollector.ViewModels
         public Address Address { get; set; }
         public int? PickupDayId { get; set; }
 
-        public IList<DateTime> result { get; set; }
+        public IList<DateTime> Result { get; set; }
 
-        public IList<string> dates { get; set; }
-
-      
+        public List<string> Dates { get; set; }
 
       
-
-        public IList<string> GetStringDates(IList<DateTime> dates)
-        {
-            IList<string> result = new List<string>();
-            foreach (var el in dates)
-            {
-                result.Add(el.ToString("dddd dd MMMM", CultureInfo.CreateSpecificCulture("en-US")));
-            }
-            return result;
-        }
-       
-
         
     }
 }
